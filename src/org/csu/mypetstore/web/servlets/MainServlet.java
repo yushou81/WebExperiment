@@ -16,6 +16,9 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+//        response.setContentType("text/html;charset=utf-8");
+//        request.setCharacterEncoding("utf-8");
+
         HttpSession session = request.getSession();
         Account account = (Account)session.getAttribute("account");
 
@@ -28,7 +31,6 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
             String logInfo = logService.logInfo(" ") + strBackUrl + " 跳转到主界面";
             logService.insertLogInfo(account.getUsername(), logInfo);
         }
-
 
         request.getRequestDispatcher(MAIN).forward(request,response);
     }

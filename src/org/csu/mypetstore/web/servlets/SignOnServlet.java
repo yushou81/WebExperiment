@@ -30,6 +30,10 @@ public class SignOnServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("utf-8");
+
+
         accountService = new AccountService();
         account = accountService.getAccount(username, password);
 
@@ -68,7 +72,6 @@ public class SignOnServlet extends HttpServlet {
             }else{
                 session.setAttribute("messageSignOn", "Invalid username or password.  Signon failed.");
             }
-            //session.setAttribute("account", null);
             request.getRequestDispatcher(SIGNONFORM).forward(request, response);
         }else{
             account.setPassword(null);

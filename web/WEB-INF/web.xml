@@ -265,4 +265,15 @@
         <servlet-name>LogServlet</servlet-name>
         <url-pattern>/logServlet</url-pattern>
     </servlet-mapping>
+<!--用户名验证-->
+    <servlet>
+        <servlet-name>UsernameIsExistServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlets.UserNameIsExistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsernameIsExistServlet</servlet-name>
+        <url-pattern>/usernameIsExist</url-pattern>
+    </servlet-mapping>
+<!--测试页面-->
+
 </web-app>

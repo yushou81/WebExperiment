@@ -1,7 +1,7 @@
 body {
   margin: 0ex 10ex 0ex 10ex;
   padding: 0ex;
-  font-family: helvetica, tahoma, arial, verdana, sans-serif;
+  /*font-family: helvetica, tahoma, arial, verdana, sans-serif;*/
   font-size: 2ex;
   color: #333;
   background-color: #444;
@@ -9,7 +9,6 @@ body {
 
 pre {
   font-family: "Courier New", Courier, mono;
-
   font-style: normal;
   background-color: #FFFFFF;
   white-space: pre
@@ -317,4 +316,10 @@ body>#Banner {
   float: left;
   background-color:#ccc;
   text-align:left;
+}
+.okmsg{
+  color: #005e21;
+}
+.errormsg{
+  color: brown;
 }

@@ -1,24 +1,32 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Summer
-  Date: 2018/12/10
-  Time: 15:25
-  To change this template use File | Settings | File Templates.
---%>
 </div>
+<footer>
 
-<div id="Footer">
-    <div id="PoweredBy">&nbsp<a href="www.csu.edu.cn">www.csu.edu.cn</a>
-    </div>
+    <ul>
+        Products
+        <li><a href="#">Food &amp; Treats</a></li>
+        <li><a href="#">Toys</a></li>
+        <li><a href="#">Beds &amp; Furniture</a></li>
+        <li><a href="#">Outdoor Supplies</a></li>
+        <li><a href="#">Clothing</a></li>
+        <li><a href="#">Aquariums</a></li>
+        <li><a href="#">Rocks &amp; Decorations</a></li>
+    </ul>
 
-    <!--列出用户喜欢的标题-->
-    <div id="Banner">
-        <c:if test="${sessionScope.account.bannerOption} != null">
-         ${sessionScope.account.bannername}
-        </c:if>
-    </div>
+    <ul>
+        Shop by Pet
+        <li><a href="#">Dogs</a></li>
+        <li><a href="#">Cats</a></li>
+        <li><a href="#">Birds</a></li>
+        <li><a href="#">Fish</a></li>
+    </ul>
 
-</div>
+    <ul>
+        Our Company
+        <li><a href="#">Locations &amp; Hours</a></li>
+        <li><a href="#">About Us</a></li>
+    </ul>
 
+
+</footer>
 </body>
 </html>
