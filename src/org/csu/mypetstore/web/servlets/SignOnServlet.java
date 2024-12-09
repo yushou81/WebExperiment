@@ -49,8 +49,10 @@ public class SignOnServlet extends HttpServlet {
 
         //获得输入的验证码值
         String value1=request.getParameter("vCode");
+        System.out.println(value1);
         /*获取图片的值*/
         String value2=(String)session.getAttribute("checkcode");
+        System.out.println(value2);
         Boolean isSame = false;
 
         /*对比两个值（字母不区分大小写）*/
@@ -66,6 +68,7 @@ public class SignOnServlet extends HttpServlet {
             }
             request.getRequestDispatcher(SIGNONFORM).forward(request, response);
         }else{
+            System.out.println("Success");
             CatalogService catalogService = new CatalogService();
             List<Product> myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
 //            System.out.println(account);

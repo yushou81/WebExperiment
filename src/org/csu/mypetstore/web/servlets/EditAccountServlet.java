@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.io.IOException;
 
 public class EditAccountServlet extends HttpServlet {
 
     private static final String EDITACOUNT = "/WEB-INF/jsp/account/EditAccountForm.jsp";
+    private static final String MYACCOUNT = "/WEB-INF/jsp/account/MyAccount.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -22,7 +24,6 @@ public class EditAccountServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Account account = (Account)session.getAttribute("account");
 
-        setAccount(account, request);
         if(account != null){
             HttpServletRequest httpRequest= request;
             String strBackUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
@@ -33,7 +34,7 @@ public class EditAccountServlet extends HttpServlet {
             logService.insertLogInfo(account.getUsername(), logInfo);
         }
 
-        request.getRequestDispatcher(EDITACOUNT).forward(request, response);
+        request.getRequestDispatcher(MYACCOUNT).forward(request, response);
     }
     private void setAccount(Account account, HttpServletRequest request) {
         String firstName = request.getParameter("firstName");

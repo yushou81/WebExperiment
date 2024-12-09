@@ -273,6 +273,7 @@ button.ghost {
     position: relative;
     overflow: hidden;
     width: 1200px;
+    height: 1050px;
     max-width: 100%;
     min-height: 380px;
     margin-top: 80px;

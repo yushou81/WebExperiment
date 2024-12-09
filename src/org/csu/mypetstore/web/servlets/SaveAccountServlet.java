@@ -32,9 +32,9 @@ public class SaveAccountServlet extends HttpServlet {
         String password = null;
         boolean isNewAccountBoolean = Boolean.parseBoolean(isNewAccount);
         if (isNewAccountBoolean){
-            password = request.getParameter("password");
-        }else {
             password = account.getPassword();
+        }else {
+            password = request.getParameter("password");
         }
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -85,8 +85,8 @@ public class SaveAccountServlet extends HttpServlet {
         }
         if(isNewAccountBoolean){
             session.setAttribute("isNewAccount", "false");
-            request.getRequestDispatcher(MAIN).forward(request, response);
         }
+        request.getRequestDispatcher(MAIN).forward(request, response);
         request.getRequestDispatcher(EDITACOUNT).forward(request, response);
     }
 }
