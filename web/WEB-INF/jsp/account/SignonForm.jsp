@@ -116,25 +116,6 @@
 		</div>
 	</nav>
 </header>
-
-<%--<div id="Content">--%>
-<%--	<div id="Catalog">--%>
-<%--		<form action="signOn" method="post">--%>
-<%--			<p>Please enter your username and password.</p>--%>
-<%--			<p>--%>
-<%--				Username:<input type="text" id="username" name="username" value="j2ee" onblur="checkUsername();"/><br />--%>
-<%--				Password:<input type="password" name="password" value="j2ee" /><br />--%>
-<%--				<span id="isExistInfo" class=""></span><br />--%>
-<%--				VerificationCode:<input type="text" name="vCode" size="5" maxlength="4"/>--%>
-<%--				<a href="signOn"><img border="0" src="verificationCode" name="checkcode"></a>--%>
-<%--			</p>--%>
-<%--			<input type="submit" name="signon" value="Login" />--%>
-<%--		</form>--%>
-<%--			Need a user name and password?--%>
-<%--			<!--newAccountForm-->--%>
-<%--			<a href="newAccountForm">Register Now!</a>--%>
-<%--	</div>--%>
-
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<form action="newAccount" method="post">
@@ -143,7 +124,7 @@
 				<input type="text" name="username" placeholder="Username" onblur="checkUsername();"/>
 				<input type="email" name="email" placeholder="Email" />
 				<input type="password" name="password" placeholder="Password" />
-				<input type="password"  name="confirmPassword" placeholder="Confirm Password" />
+				<input type="password"  name="repeatedPassword" placeholder="Confirm Password" />
 				<input type="text" name="vCode" size="5" maxlength="4" placeholder="VerificationCode"/>
 				<a href="signOn"><img border="0" src="verificationCode" name="checkcode"></a>
 				<button type="submit">Sign Up</button>

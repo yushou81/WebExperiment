@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class SaveAccountServlet extends HttpServlet {
-
+    private static final String MAIN = "/WEB-INF/jsp/catalog/Main.jsp";
     private static final String EDITACOUNT = "/WEB-INF/jsp/account/EditAccountForm.jsp";
 
     private Account account;
@@ -27,7 +27,15 @@ public class SaveAccountServlet extends HttpServlet {
         account = (Account) session.getAttribute("account");
 
         String username = account.getUsername();
-        String password = request.getParameter("password");
+
+        String isNewAccount = (String) session.getAttribute("isNewAccount");
+        String password = null;
+        boolean isNewAccountBoolean = Boolean.parseBoolean(isNewAccount);
+        if (isNewAccountBoolean){
+            password = request.getParameter("password");
+        }else {
+            password = account.getPassword();
+        }
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -44,6 +52,7 @@ public class SaveAccountServlet extends HttpServlet {
         String bannerOption = request.getParameter("bannerOption");
 
         account.setUsername(username);
+
         account.setPassword(password);
         account.setFirstName(firstName);
         account.setLastName(lastName);
@@ -74,7 +83,10 @@ public class SaveAccountServlet extends HttpServlet {
             String logInfo = logService.logInfo(" ") + strBackUrl + " 账号信息更改";
             logService.insertLogInfo(account.getUsername(), logInfo);
         }
-
+        if(isNewAccountBoolean){
+            session.setAttribute("isNewAccount", "false");
+            request.getRequestDispatcher(MAIN).forward(request, response);
+        }
         request.getRequestDispatcher(EDITACOUNT).forward(request, response);
     }
 }

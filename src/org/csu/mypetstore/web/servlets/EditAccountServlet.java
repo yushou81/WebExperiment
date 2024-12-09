@@ -22,6 +22,7 @@ public class EditAccountServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Account account = (Account)session.getAttribute("account");
 
+        setAccount(account, request);
         if(account != null){
             HttpServletRequest httpRequest= request;
             String strBackUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
@@ -33,5 +34,34 @@ public class EditAccountServlet extends HttpServlet {
         }
 
         request.getRequestDispatcher(EDITACOUNT).forward(request, response);
+    }
+    private void setAccount(Account account, HttpServletRequest request) {
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String phone = request.getParameter("phone");
+        String address1 = request.getParameter("address1");
+        String address2 = request.getParameter("address2");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        String zip = request.getParameter("zip");
+        String country = request.getParameter("country");
+        String languagePreference = request.getParameter("languagePreference");
+        String favouriteCategoryId = request.getParameter("favouriteCategoryId");
+        String listOption = request.getParameter("listOption");
+        String bannerOption = request.getParameter("bannerOption");
+
+        account.setFirstName(firstName);
+        account.setLastName(lastName);
+        account.setPhone(phone);
+        account.setAddress1(address1);
+        account.setAddress2(address2);
+        account.setCity(city);
+        account.setState(state);
+        account.setZip(zip);
+        account.setCountry(country);
+        account.setLanguagePreference(languagePreference);
+        account.setFavouriteCategoryId(favouriteCategoryId);
+        account.setListOption(Boolean.parseBoolean(listOption));
+        account.setBannerOption(Boolean.parseBoolean(bannerOption));
     }
 }

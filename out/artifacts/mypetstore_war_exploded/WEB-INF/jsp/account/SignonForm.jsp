@@ -143,7 +143,7 @@
 				<input type="text" name="username" placeholder="Username" onblur="checkUsername();"/>
 				<input type="email" name="email" placeholder="Email" />
 				<input type="password" name="password" placeholder="Password" />
-				<input type="password"  name="confirmPassword" placeholder="Confirm Password" />
+				<input type="password"  name="repeatedPassword" placeholder="Confirm Password" />
 				<input type="text" name="vCode" size="5" maxlength="4" placeholder="VerificationCode"/>
 				<a href="signOn"><img border="0" src="verificationCode" name="checkcode"></a>
 				<button type="submit">Sign Up</button>

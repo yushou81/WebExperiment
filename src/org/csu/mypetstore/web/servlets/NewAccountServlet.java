@@ -14,9 +14,9 @@ import java.io.IOException;
 public class NewAccountServlet extends HttpServlet {
     private static final String MAIN = "/WEB-INF/jsp/catalog/Main.jsp";
     private static final String NEWACCOUNTFORM = "/WEB-INF/jsp/account/NewAccountForm.jsp";
+    private static final String FIRSTSIGNUP = "/WEB-INF/jsp/account/FirstSignUp.jsp";
 
     private Account account;
-    private Account account1;
     private AccountService accountService;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +27,7 @@ public class NewAccountServlet extends HttpServlet {
         HttpSession session = request.getSession();
         account = null;
         session.setAttribute("account", account);
+        session.setAttribute("isNewAccount", "true" );
 
         //获得输入的验证码值
         String value1=request.getParameter("vCode");
@@ -42,37 +43,39 @@ public class NewAccountServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        account1 = new Account(username, password, email);
+        //  实例化用户类
+        account = new Account(username, password, email);
 
         if(isSame){
-            accountService = new AccountService();
-            accountService.insertAccount(account1);
-
-            if(account1 != null){
+            if(account != null){
                 HttpServletRequest httpRequest= request;
                 String strBackUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
                         + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
 
                 LogService logService = new LogService();
                 String logInfo = logService.logInfo(" ") + strBackUrl + " 注册新账号";
-                logService.insertLogInfo(account1.getUsername(), logInfo);
+                logService.insertLogInfo(account.getUsername(), logInfo);
             }
-
-            request.getRequestDispatcher(MAIN).forward(request, response);
+            //  调用service层的方法，将用户信息存入数据库中
+            accountService = new AccountService();
+            accountService.insertAccount(account);
+            session.setAttribute("account", account);
+            request.getRequestDispatcher(FIRSTSIGNUP).forward(request, response);
         }else{
             session.setAttribute("messageAccount", "Invalid Verification Code.");
 
-            if(account1 != null){
+            if(account != null){
                 HttpServletRequest httpRequest= request;
                 String strBackUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
                         + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
 
                 LogService logService = new LogService();
                 String logInfo = logService.logInfo(" ") + strBackUrl + " 注册账号，验证码错误";
-                logService.insertLogInfo(account1.getUsername(), logInfo);
+                logService.insertLogInfo(account.getUsername(), logInfo);
             }
 
             request.getRequestDispatcher(NEWACCOUNTFORM).forward(request, response);
         }
     }
+
 }
