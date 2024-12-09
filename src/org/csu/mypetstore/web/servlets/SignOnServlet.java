@@ -33,13 +33,9 @@ public class SignOnServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
 
-
         accountService = new AccountService();
         account = accountService.getAccount(username, password);
-
         HttpSession session = request.getSession();
-        session.setAttribute("account", account);
-
 
         if(account != null){
             HttpServletRequest httpRequest= request;
@@ -56,15 +52,11 @@ public class SignOnServlet extends HttpServlet {
         /*获取图片的值*/
         String value2=(String)session.getAttribute("checkcode");
         Boolean isSame = false;
+
         /*对比两个值（字母不区分大小写）*/
         if(value2.equalsIgnoreCase(value1)){
             isSame = true;
         }
-
-        CatalogService catalogService = new CatalogService();
-        List<Product> myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
-        System.out.println(account);
-        session.setAttribute("mylist",myList);
 
         if (account == null || !isSame){
             if(!isSame){
@@ -74,7 +66,14 @@ public class SignOnServlet extends HttpServlet {
             }
             request.getRequestDispatcher(SIGNONFORM).forward(request, response);
         }else{
+            CatalogService catalogService = new CatalogService();
+            List<Product> myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+//            System.out.println(account);
+            session.setAttribute("mylist",myList);
+
             account.setPassword(null);
+            session.setAttribute("account", account);
+            System.out.println("成功登录");
             request.getRequestDispatcher(MAIN).forward(request, response);
         }
     }

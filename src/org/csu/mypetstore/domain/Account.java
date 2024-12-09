@@ -27,6 +27,29 @@ public class Account implements Serializable {
   private boolean bannerOption;
   private String bannerName;
 
+  public Account(String username, String password, String email) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    // 初始化其他字段为 null
+    this.firstName = null;
+    this.lastName = null;
+    this.status = null;
+    this.address1 = null;
+    this.address2 = null;
+    this.city = null;
+    this.state = null;
+    this.zip = null;
+    this.country = null;
+    this.phone = null;
+    this.favouriteCategoryId = null;
+    this.languagePreference = null;
+    this.listOption = false;
+    this.bannerOption = false;
+    this.bannerName = null;
+  }
+  public Account() {
+  }
   public String getUsername() {
     return username;
   }

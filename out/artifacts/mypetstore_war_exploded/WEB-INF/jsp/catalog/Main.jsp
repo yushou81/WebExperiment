@@ -17,53 +17,6 @@
 <body>
 
 <%--顶部--%>
-<div id="Header">
-
-    <div id="Menu">
-        <div id="MenuContent">
-            <!--购物车-->
-
-            <c:if test="${sessionScope.account == null}">
-                <a href="signOnForm">Sign In</a>
-            </c:if>
-            <c:if test="${sessionScope.account != null}">
-                <a href="signOff">Sign Out</a>
-                <!---signOff-->
-            </c:if>
-
-            <!--分隔符-->
-            <c:if test="${sessionScope.account != null}">
-                <img align="middle" src="images/separator.gif" />
-                <a href="editAccount">My Account</a>
-            </c:if>
-            <img align="middle" src="images/separator.gif" />
-            <!--暂未提供-->
-            <a href="JPetStoreDemo.html">?</a>
-        </div>
-    </div>
-
-    <div id="Search">
-        <div id="SearchContent">
-            <!--搜索栏目-->
-            <form action="searchProduct" method="post">
-                <input type="text" name="keyword" size="14" />
-                <input type="submit" name="searchProducts" value="Search" />
-            </form>
-        </div>
-    </div>
-
-    <div id="QuickLinks">
-        <a href="viewCategory?categoryId=FISH"><img src="images/sm_fish.gif" /></a>
-        <img src="images/separator.gif" />
-        <a href="viewCategory?categoryId=DOGS"><img src="images/sm_dogs.gif" /></a>
-        <img src="images/separator.gif" />
-        <a href="viewCategory?categoryId=REPTILES"><img src="images/sm_reptiles.gif" /></a>
-        <img src="images/separator.gif" />
-        <a href="viewCategory?categoryId=CATS"><img src="images/sm_cats.gif" /></a>
-        <img src="images/separator.gif" />
-        <a href="viewCategory?categoryId=BIRDS"><img src="images/sm_birds.gif" /></a>
-    </div>
-</div>
 <header>
     <nav>
         <div id="logo">
@@ -71,64 +24,97 @@
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z" fill="#45413E" />
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z" fill="#45413E" />
             </svg>
-
-            My <br> Pet Store
+            My<br> Pet Store
         </div>
         <ul class="navigation-menu">
-            <li><a href="#">Products</a>
+            <li>
+                <a href="#">Products</a>
                 <ul class="subnav">
                     <li class="card-med" id="sup-dog">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png"></div>
                         <a href="#">
                             <span>Dogs</span>
-                            <span>Shop All <span class="material-symbols-outlined">
+                            <span>Shop All
+                                <span class="material-symbols-outlined">
                                         arrow_forward
-                                    </span></span>
+                                </span>
+                            </span>
                         </a>
                     </li>
                     <li class="card-med" id="sup-cat">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></div>
                         <a href="#">
                             <span>Cats</span>
-                            <span>Shop All <span class="material-symbols-outlined">
+                            <span>Shop All
+                                <span class="material-symbols-outlined">
                                         arrow_forward
-                                    </span></span>
+                                </span>
+                            </span>
                         </a>
                     </li>
                     <li class="card-med" id="sup-bird">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png"></div>
                         <a href="#">
                             <span>Birds</span>
-                            <span>Shop All <span class="material-symbols-outlined">
+                            <span>Shop All
+                                <span class="material-symbols-outlined">
                                         arrow_forward
-                                    </span></span>
+                                </span>
+                            </span>
                         </a>
                     </li>
                     <li class="card-med" id="sup-fish">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></div>
                         <a href="#">
                             <span>Fish</span>
-                            <span>Shop All <span class="material-symbols-outlined">
+                            <span>Shop All
+                                <span class="material-symbols-outlined">
                                         arrow_forward
-                                    </span></span>
+                                </span>
+                            </span>
                         </a>
                     </li>
                 </ul>
+            </li>
             <li>
                 <a href="#">About Us</a>
             </li>
+            <li>
+<%--                登录--%>
+                <c:if test="${sessionScope.account == null}">
+                    <a href="signOnForm">Sign In</a>
+                </c:if>
+            </li>
+            <li>
+                <c:if test="${sessionScope.account != null}">
+                    <a href="editAccount">My Account</a>
+                </c:if>
+            </li>
+            <li>
+                <%--                登出--%>
+                <c:if test="${sessionScope.account != null}">
+                    <a href="signOff">Sign Out</a>
+                </c:if>
+            </li>
         </ul>
         <div id="utility">
-                <span class="material-symbols-outlined">
-                    search
-                </span>
+<%--            搜索栏--%>
+            <span class="material-symbols-outlined">
+                <div id="Search">
+                    <div id="SearchContent">
+                        <form action="searchProduct" method="post">
+                            <input type="text" name="keyword" size="14" />
+                            <input type="submit" name="searchProducts" value="Search" />
+                        </form>
+                    </div>
+                </div>
+            </span>
 
             <span class="material-symbols-outlined">
                 <a href="viewCart">
-                    <img align="middle" name="img_cart" src="images/cart.gif" />
+                    <img  name="img_cart" src="images/cart.gif" />
                 </a>
-                </span>
-
+            </span>
         </div>
     </nav>
 </header>
@@ -136,11 +122,13 @@
 <section class="hero">
     <h1>Your One-Stop Shop for Every Pet's Needs!</h1>
     <div class="btn-group">
-        <button class="btn-filled-dark"><span class="material-symbols-outlined">
-                shopping_cart
-        </span>Shop All Products</button>
+        <button class="btn-filled-dark">
+            <span class="material-symbols-outlined">
+                <img  name="img_cart" src="images/cart.gif" />
+            </span>
+            Shop All Products
+        </button>
     </div>
-
 </section>
 
 <section>
@@ -157,9 +145,10 @@
                 <li><a href="#">Outdoor Supplies</a></li>
                 <li><a href="#">Clothing</a></li>
 
-                <button class="btn-outline-light">Shop All<span class="material-symbols-outlined">
-                            arrow_forward
-                        </span></button>
+                <button class="btn-outline-light" onclick="location.href='viewCategory?categoryId=DOGS';">
+                    Shop All
+                    <%-- <span class="material-symbols-outlined">arrow_forward</span>--%>
+                </button>
 
             </ul>
 
@@ -172,9 +161,10 @@
                 <li><a href="#">Food &amp; Treats</a></li>
                 <li><a href="#">Toys</a></li>
                 <li><a href="#">Beds &amp; Furniture</a></li>
-                <button class="btn-outline-dark">Shop All<span class="material-symbols-outlined">
-                            arrow_forward
-                        </span></button>
+                <button class="btn-outline-dark" onclick="location.href='viewCategory?categoryId=CATS';">
+                    Shop All
+                    <%-- <span class="material-symbols-outlined">arrow_forward</span>--%>
+                </button>
             </ul>
 
         </li>
@@ -185,9 +175,10 @@
                 <li><a href="#">Food &amp; Treats</a></li>
                 <li><a href="#">Toys</a></li>
                 <li><a href="#">Furniture</a></li>
-                <button class="btn-outline-dark">Shop All<span class="material-symbols-outlined">
-                            arrow_forward
-                        </span></button>
+                <button class="btn-outline-dark" onclick="location.href='viewCategory?categoryId=BIRDS';">
+                    Shop All
+                    <%-- <span class="material-symbols-outlined">arrow_forward</span>--%>
+                </button>
             </ul>
 
         </li>
@@ -198,53 +189,15 @@
                 <li><a href="#">Food</a></li>
                 <li><a href="#">Aquariums</a></li>
                 <li><a href="#">Rocks &amp; Decorations</a></li>
-                <button class="btn-outline-light">Shop All<span class="material-symbols-outlined">
-                            arrow_forward
-                        </span></button>
+                <button class="btn-outline-dark" onclick="location.href='viewCategory?categoryId=FISH';">
+                    Shop All
+                    <%-- <span class="material-symbols-outlined">arrow_forward</span>--%>
+                </button>
             </ul>
 
         </li>
     </ul>
 </section>
-<div id="Main">
-    <div id="Welcome">
-        <div id="WelcomeContent" style="font-size: 25px">
-            Welcome to MyPetStore!
-        </div>
-    </div>
-    <br />
-    <div id="Sidebar">
-        <!--左侧导航栏-->
-        <div id="SidebarContent">
-            <a href="viewCategory?categoryId=FISH"><img src="images/fish_icon.gif" /></a>
-            <br/> Saltwater, Freshwater <br/>
-            <a href="viewCategory?categoryId=DOGS"><img src="images/dogs_icon.gif" /></a>
-            <br /> Various Breeds <br />
-            <a href="viewCategory?categoryId=CATS"><img src="images/cats_icon.gif" /></a>
-            <br /> Various Breeds, Exotic Varieties <br />
-            <a href="viewCategory?categoryId=REPTILES"><img src="images/reptiles_icon.gif" /></a>
-            <br /> Lizards, Turtles, Snakes <br />
-            <a href="viewCategory?categoryId=BIRDS"><img src="images/birds_icon.gif" /></a>
-            <br /> Exotic Varieties
-        </div>
-    </div>
-
-    <div id="MainImage">
-        <div id="MainImageContent">
-            <!--中间显示栏-->
-            <map name="estoremap">
-                <area alt="Birds" coords="72,2,280,250" href="viewCategory?categoryId=BIRDS" shape="rect" />
-                <area alt="Fish" coords="2,180,72,250" href="viewCategory?categoryId=FISH" shape="rect" />
-                <area alt="Dogs" coords="60,250,130,320" href="viewCategory?categoryId=DOGS" shape="rect" />
-                <area alt="Reptiles" coords="140,270,210,340" href="viewCategory?categoryId=REPTILES" shape="rect" />
-                <area alt="Cats" coords="225,240,295,310" href="viewCategory?categoryId=CATS" shape="rect" />
-                <area alt="Birds" coords="280,180,350,250" href="viewCategory?categoryId=BIRDS" shape="rect" />
-            </map>
-            <img height="355" src="images/splash.gif" align="middle" usemap="#estoremap" width="350" />
-        </div>
-    </div>
-    <div id="Separator">&nbsp;</div>
-</div>
 <footer>
     <ul>
         Products
@@ -270,8 +223,6 @@
         <li><a href="#">Locations &amp; Hours</a></li>
         <li><a href="#">About Us</a></li>
     </ul>
-
-
 </footer>
 </body>
 </html>
