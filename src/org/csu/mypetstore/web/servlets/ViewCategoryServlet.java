@@ -35,7 +35,6 @@ public class ViewCategoryServlet extends HttpServlet {
         session.setAttribute("category", category);
         session.setAttribute("productList", productList);
 
-        //HttpSession session = request.getSession();
         Account account = (Account)session.getAttribute("account");
 
         if(account != null){

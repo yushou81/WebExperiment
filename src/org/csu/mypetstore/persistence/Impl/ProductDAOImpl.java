@@ -13,7 +13,7 @@ import java.util.List;
 public class ProductDAOImpl implements ProductDAO {
 
     //查询语句
-    private static final String getProductListByCategoryString = "SELECT PRODUCTID, NAME, DESCN as description, " +
+    private static final String getProductListByCategoryString = "SELECT PRODUCTID, NAME, DESCN as description,img, " +
             "CATEGORY as categoryId FROM PRODUCT WHERE CATEGORY = ?";
     private static final String getProductString = "SELECT PRODUCTID, NAME, DESCN as description, CATEGORY as categoryId " +
             "FROM PRODUCT WHERE PRODUCTID = ?";
@@ -33,7 +33,8 @@ public class ProductDAOImpl implements ProductDAO {
                 product.setProductId(resultSet.getString(1));
                 product.setName(resultSet.getString(2));
                 product.setDescription(resultSet.getString(3));
-                product.setCategoryId(resultSet.getString(4));
+                product.setImg(resultSet.getString(4));
+                product.setCategoryId(resultSet.getString(5));
 
                 products.add(product);
             }

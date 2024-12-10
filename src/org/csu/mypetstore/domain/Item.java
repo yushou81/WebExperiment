@@ -1,5 +1,7 @@
 package org.csu.mypetstore.domain;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -20,6 +22,7 @@ public class Item implements Serializable {
   private String attribute5;
   private Product product;
   private int quantity;
+  private String img;
 
   public String getItemId() {
     return itemId;
@@ -125,8 +128,32 @@ public class Item implements Serializable {
     this.attribute5 = attribute5;
   }
 
+  @Override
   public String toString() {
-    return "(" + getItemId() + "-" + getProductId() + ")";
+    // 手动拼接 JSON 字符串
+    StringBuilder json = new StringBuilder("{");
+    json.append("\"itemId\":\"").append(itemId).append("\",");
+    json.append("\"productId\":\"").append(productId).append("\",");
+    json.append("\"listPrice\":").append(listPrice == null ? "null" : listPrice).append(",");
+    json.append("\"unitCost\":").append(unitCost == null ? "null" : unitCost).append(",");
+    json.append("\"supplierId\":").append(supplierId).append(",");
+    json.append("\"status\":\"").append(status).append("\",");
+    json.append("\"attribute1\":\"").append(attribute1).append("\",");
+    json.append("\"attribute2\":\"").append(attribute2).append("\",");
+    json.append("\"attribute3\":\"").append(attribute3).append("\",");
+    json.append("\"attribute4\":\"").append(attribute4).append("\",");
+    json.append("\"attribute5\":\"").append(attribute5).append("\",");
+    json.append("\"product\":").append(product == null ? "null" : product.toString()).append(",");
+    json.append("\"quantity\":").append(quantity);
+    json.append("}");
+    return json.toString();
   }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 }

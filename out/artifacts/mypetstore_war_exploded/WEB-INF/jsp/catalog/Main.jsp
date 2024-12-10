@@ -32,7 +32,7 @@
                 <ul class="subnav">
                     <li class="card-med" id="sup-dog">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png"></div>
-                        <a href="#">
+                        <a href="viewCategory?categoryId=DOGS">
                             <span>Dogs</span>
                             <span>Shop All
                                 <span class="material-symbols-outlined">
@@ -43,7 +43,7 @@
                     </li>
                     <li class="card-med" id="sup-cat">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></div>
-                        <a href="#">
+                        <a href="viewCategory?categoryId=CATS">
                             <span>Cats</span>
                             <span>Shop All
                                 <span class="material-symbols-outlined">
@@ -54,7 +54,7 @@
                     </li>
                     <li class="card-med" id="sup-bird">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png"></div>
-                        <a href="#">
+                        <a href="viewCategory?categoryId=BIRDS">
                             <span>Birds</span>
                             <span>Shop All
                                 <span class="material-symbols-outlined">
@@ -65,7 +65,7 @@
                     </li>
                     <li class="card-med" id="sup-fish">
                         <div class="card-image"><img src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></div>
-                        <a href="#">
+                        <a href="viewCategory?categoryId=FISH">
                             <span>Fish</span>
                             <span>Shop All
                                 <span class="material-symbols-outlined">

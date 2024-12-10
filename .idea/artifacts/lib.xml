@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="lib">
+    <output-path>$PROJECT_DIR$/web/WEB-INF/lib</output-path>
+    <root id="root">
+      <element id="library" level="project" name="alibaba.fastjson2" />
+      <element id="library" level="project" name="google.code.gson" />
+      <element id="library" level="project" name="hynnet.javax.servlet.api" />
+      <element id="library" level="project" name="jsp-api" />
+      <element id="library" level="project" name="lib" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.30" />
+    </root>
+  </artifact>
+</component>
