@@ -86,16 +86,6 @@
         <servlet-name>RemoveItemFromCartServlet</servlet-name>
         <url-pattern>/removeItemFromCart</url-pattern>
     </servlet-mapping>
-
-    <!--更新购物车数量-->
-    <servlet>
-        <servlet-name>UpdateCartQuantitiesServlet</servlet-name>
-        <servlet-class>org.csu.mypetstore.web.servlets.UpdateCartQuantitiesServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UpdateCartQuantitiesServlet</servlet-name>
-        <url-pattern>/updateCartQuantities</url-pattern>
-    </servlet-mapping>
     
     <!--登录跳转配置-->
     <servlet>
@@ -273,6 +263,42 @@
     <servlet-mapping>
         <servlet-name>UsernameIsExistServlet</servlet-name>
         <url-pattern>/usernameIsExist</url-pattern>
+    </servlet-mapping>
+<!--更新购物车-->
+    <servlet>
+        <servlet-name>RenewCartServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlets.RenewCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RenewCartServlet</servlet-name>
+        <url-pattern>/renewCart</url-pattern>
+    </servlet-mapping>
+<!--获取购物车-->
+    <servlet>
+        <servlet-name>GetCartServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlets.GetCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCartServlet</servlet-name>
+        <url-pattern>/getCart</url-pattern>
+    </servlet-mapping>
+    <!--删除购物车-->
+    <servlet>
+        <servlet-name>RemoveCartServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlets.RemoveCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCartServlet</servlet-name>
+        <url-pattern>/removeCart</url-pattern>
+    </servlet-mapping>
+<!--    自动补全-->
+    <servlet>
+        <servlet-name>AutoFixServlet</servlet-name>
+        <servlet-class>org.csu.mypetstore.web.servlets.AutoFixServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AutoFixServlet</servlet-name>
+        <url-pattern>/autoFix</url-pattern>
     </servlet-mapping>
 <!--测试页面-->
 

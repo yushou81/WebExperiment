@@ -28,7 +28,7 @@ public class CartFormServlet extends HttpServlet{
         if(loginAccount == null){
             resp.sendRedirect("signonForm");
         }else {
-            Cart cart = cartService.createCarte(loginAccount.getUsername());
+            Cart cart = cartService.creatCart(loginAccount.getUsername());
             session.setAttribute("cart",cart);
 
             req.getRequestDispatcher(CART_FORM).forward(req,resp);

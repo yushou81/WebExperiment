@@ -1,0 +1,58 @@
+table {
+    border-width: 0;
+    empty-cells: show;
+}
+
+td, th {
+    empty-cells: show;
+    padding: .3ex .3ex;
+    vertical-align: top;
+    text-align: center;
+    border-width: 0;
+    border-spacing: 0;
+    background-color: #ececec
+}
+
+th {
+    font-weight: bold;
+    background-color: #e2e2e2;
+}
+
+
+
+#Catalog {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    margin: 0 auto;
+    margin-top: 50px;
+    background:white;
+    text-align:center;
+}
+
+#Catalog input[type="submit"]{
+    padding: .3ex;
+    color: #fff;
+    background-color: #005e21;
+    text-decoration: none;
+    font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    font-size: 1.5ex;
+    border-width:0;
+}
+#Catalog input[type="submit"]:hover {
+    color: #000;
+    background-color: #54c07a;
+    cursor:pointer;
+}
+
+#Catalog table{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#Cart{
+    width: 69.99%;
+    /*float: left;*/
+    background-color:#fff;
+}

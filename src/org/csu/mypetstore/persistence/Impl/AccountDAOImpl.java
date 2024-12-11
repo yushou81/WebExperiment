@@ -48,7 +48,7 @@ public class AccountDAOImpl implements AccountDAO {
     private static final String insertAccountString = "    INSERT INTO ACCOUNT" +
             "      (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)" +
             "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" ;
-    private static final String insertProfileString = "   INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID) VALUES (?, ?, ?)";
+    private static final String insertProfileString = "   INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID,MYLISTOPT,BANNEROPT) VALUES (?, ?, ?,?,?)";
     private static final String insertSignonString = "INSERT INTO SIGNON (PASSWORD,USERNAME) VALUES (?, ?)";
     private static final String updateAccountString = "UPDATE ACCOUNT SET" +
             "      EMAIL = ?," +
@@ -63,7 +63,7 @@ public class AccountDAOImpl implements AccountDAO {
             "      COUNTRY = ?," +
             "      PHONE = ?" +
             "    WHERE USERID = ?";
-    private static final String updateProfileString = "UPDATE PROFILE SET LANGPREF = ?, FAVCATEGORY = ? WHERE USERID = ?";
+    private static final String updateProfileString = "UPDATE PROFILE SET LANGPREF = ?, FAVCATEGORY = ? ,MYLISTOPT=?,BANNEROPT = ? WHERE USERID = ?";
     private static final String updateSignonString = "UPDATE SIGNON SET PASSWORD = ? WHERE USERNAME = ?";
 
     @Override
@@ -175,6 +175,9 @@ public class AccountDAOImpl implements AccountDAO {
             preparedStatement.setString(1, account.getLanguagePreference());
             preparedStatement.setString(2, account.getFavouriteCategoryId());
             preparedStatement.setString(3, account.getUsername());
+            preparedStatement.setBoolean(4, account.isListOption());
+            preparedStatement.setBoolean(5, account.isBannerOption());
+
             preparedStatement.executeUpdate();
 
             DBUtil.closeStatement(preparedStatement);
@@ -233,7 +236,9 @@ public class AccountDAOImpl implements AccountDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(updateProfileString);
             preparedStatement.setString(1, account.getLanguagePreference());
             preparedStatement.setString(2, account.getFavouriteCategoryId());
-            preparedStatement.setString(3, account.getUsername());
+            preparedStatement.setBoolean(3, account.isListOption());
+            preparedStatement.setBoolean(4, account.isBannerOption());
+            preparedStatement.setString(5, account.getUsername());
             preparedStatement.executeUpdate();
 
             DBUtil.closePreparedStatent(preparedStatement);

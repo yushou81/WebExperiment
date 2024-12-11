@@ -15,6 +15,7 @@ import java.util.List;
 
 public class SearchProductServlet extends HttpServlet {
     private static final String SEARCH_PRODUCTS = "/WEB-INF/jsp/catalog/SearchProducts.jsp";
+    private static final String VIEW_CATEGORY = "/WEB-INF/jsp/catalog/Category.jsp";
 
     private String keyword;
 
@@ -24,12 +25,13 @@ public class SearchProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         keyword = request.getParameter("keyword");
-        //request.setAttribute("keyword", keyword);
+
         CatalogService service = new CatalogService();
         List<Product> productList = service.searchProductList(keyword);
 
         //保存数据
         HttpSession session = request.getSession();
+
         session.setAttribute("keyword", keyword);
         session.setAttribute("productList", productList);
 
@@ -44,9 +46,9 @@ public class SearchProductServlet extends HttpServlet {
             String logInfo = logService.logInfo(" ") + strBackUrl + " 查找商品" + "  " + productList;
             logService.insertLogInfo(account.getUsername(), logInfo);
         }
-
-
+        System.out.println(productList.size());
+        System.out.println(productList);
         //跳转页面
-        request.getRequestDispatcher(SEARCH_PRODUCTS).forward(request, response);
+        request.getRequestDispatcher(VIEW_CATEGORY).forward(request, response);
     }
 }

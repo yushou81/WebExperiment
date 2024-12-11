@@ -3,7 +3,9 @@ package org.csu.mypetstore.persistence.Impl;
 import org.csu.mypetstore.domain.CartItem;
 import org.csu.mypetstore.persistence.CartItemDAO;
 import org.csu.mypetstore.persistence.DBUtil;
+import org.csu.mypetstore.persistence.ItemDAO;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +30,8 @@ public class CartItemImpl implements CartItemDAO{
     private static final String CONTAINS_CART_ITEM =
             "SELECT QUANTITY FROM CARTITEM WHERE USERID = ? AND ITEMID = ?";
 
+    private ItemDAO itemDAO = new ItemDAOImpl();
+
     @Override
     public void insertCartItem(String username, String itemId) {
         try {
@@ -45,7 +49,7 @@ public class CartItemImpl implements CartItemDAO{
 
     @Override
     public Map<String, CartItem> getCartItemsByUsername(String username) {
-        Map<String, CartItem> cartItemList = Collections.synchronizedMap(new HashMap<String, CartItem>());
+        Map<String, CartItem> cartItemMap = Collections.synchronizedMap(new HashMap<String, CartItem>());
         try{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_CART_ITEMS_BY_USERNAME);
@@ -55,7 +59,12 @@ public class CartItemImpl implements CartItemDAO{
                 CartItem cartItem = new CartItem();
                 cartItem.setItemId(resultSet.getString(1));
                 cartItem.setQuantity(resultSet.getInt(2));
-                cartItemList.put(cartItem.getItemId(),cartItem);
+
+                cartItem.setItem(itemDAO.getItem(cartItem.getItemId()));
+                cartItem.setInStock(itemDAO.getInventoryQuantity(cartItem.getItemId()) > 0);
+                cartItem.setTotal(cartItem.getItem().getListPrice().multiply(new BigDecimal(cartItem.getQuantity())));
+
+                cartItemMap.put(cartItem.getItemId(),cartItem);
             }
             DBUtil.closeResultSet(resultSet);
             DBUtil.closeStatement(preparedStatement);
@@ -63,7 +72,7 @@ public class CartItemImpl implements CartItemDAO{
         }catch (Exception e){
             e.printStackTrace();
         }
-        return cartItemList;
+        return cartItemMap;
     }
 
     @Override
@@ -103,16 +112,37 @@ public class CartItemImpl implements CartItemDAO{
         }
     }
 
-    @Override
-    public void removeCartItemById(String username, String itemId) {
+    public void renewCartItem(String username,String itemId,int quantity) {
         try {
             Connection connection = DBUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_CART_ITEM_BY_ID);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, itemId);
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CART_ITEMS);
+            preparedStatement.setInt(1, quantity);
+            preparedStatement.setString(2, username);
+            preparedStatement.setString(3, itemId);
             preparedStatement.executeUpdate();
             DBUtil.closeStatement(preparedStatement);
             DBUtil.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void removeCartItemById(String username, String itemId) {
+        try {
+            System.out.println("start removeCartItemById");
+            System.out.println(username);
+            System.out.println(itemId);
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(REMOVE_CART_ITEM_BY_ID);
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, itemId);
+
+            preparedStatement.executeUpdate();
+            DBUtil.closeStatement(preparedStatement);
+            DBUtil.closeConnection(connection);
+            System.out.println("start finishCartItemById");
         } catch (Exception e) {
             e.printStackTrace();
         }

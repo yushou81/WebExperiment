@@ -4,7 +4,7 @@ body {
   /*font-family: helvetica, tahoma, arial, verdana, sans-serif;*/
   font-size: 2ex;
   color: #333;
-  background-color: #444;
+
 }
 
 pre {
@@ -316,10 +316,4 @@ body>#Banner {
   float: left;
   background-color:#ccc;
   text-align:left;
-}
-.okmsg{
-  color: #005e21;
-}
-.errormsg{
-  color: brown;
 }

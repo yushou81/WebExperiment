@@ -17,4 +17,6 @@ public interface CartItemDAO {
     void removeCartItemById(String username,String itemId);
 
     void clearCartItems(String username);
+
+    void renewCartItem(String username, String itemId, int quantity);
 }

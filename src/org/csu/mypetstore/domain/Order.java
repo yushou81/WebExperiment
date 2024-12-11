@@ -2,10 +2,8 @@ package org.csu.mypetstore.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.*;
 import java.sql.Date;
-import java.util.Iterator;
-import java.util.List;
 
 public class Order implements Serializable {
 
@@ -287,18 +285,19 @@ public class Order implements Serializable {
     locale = "CA";
     status = "P";
 
-    Iterator<CartItem> i = cart.getAllCartItems();
+    // 从购物车中取出所有的CartItem，然后添加到Order中
+    Map<String, CartItem> cartItemMap = cart.getCartItemMap();
+    Iterator<Map.Entry<String, CartItem>> i = cartItemMap.entrySet().iterator();
     while (i.hasNext()) {
-      CartItem cartItem = (CartItem) i.next();
+      Map.Entry<String, CartItem> entry = i.next();
+      CartItem cartItem = entry.getValue();
       addLineItem(cartItem);
     }
-
   }
 
   public void addLineItem(CartItem cartItem) {
     LineItem lineItem = new LineItem(lineItems.size() + 1, cartItem);
     addLineItem(lineItem);
-    System.out.println("aoshdahsd");
   }
 
   public void addLineItem(LineItem lineItem) {

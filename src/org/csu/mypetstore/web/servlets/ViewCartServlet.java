@@ -1,5 +1,6 @@
 package org.csu.mypetstore.web.servlets;
 
+import com.google.gson.Gson;
 import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.domain.Cart;
 import org.csu.mypetstore.service.CartService;
@@ -26,11 +27,14 @@ public class ViewCartServlet extends HttpServlet {
         Account account = (Account)session.getAttribute("account");
 
         if(account != null){
-            cart=cartService.createCarte(account.getUsername());
+            cart=cartService.creatCart(account.getUsername());
+            Gson gson = new Gson();
+            String json = gson.toJson(cart);
+            System.out.println(json);
             session.setAttribute("cart", cart);
         }
         else{
-            System.out.println("这里没有cart");
+            System.out.println("there is no cart");
             //第一次使用购物车
             cart = new Cart();
             session.setAttribute("cart", cart);

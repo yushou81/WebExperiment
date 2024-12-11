@@ -777,3 +777,11 @@ footer ul li {
     }
 
 }
+
+.okmsg{
+color: #005e21;
+}
+
+.errormsg{
+    color: red;
+}

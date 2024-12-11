@@ -21,7 +21,7 @@ public class ConfirmOrderFormServlet extends HttpServlet {
     private Order order;
     private OrderService orderService;
 
-    private CartItemImpl cartitem=new CartItemImpl();
+    private CartItemImpl cartItemDao=new CartItemImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -62,9 +62,26 @@ public class ConfirmOrderFormServlet extends HttpServlet {
                 String logInfo = logService.logInfo(" ") + strBackUrl + " 更改收货地址";
                 logService.insertLogInfo(account.getUsername(), logInfo);
             }
+            String shipToFirstName = request.getParameter("shipToFirstName");
+            String shipToLastName = request.getParameter("shipToLastName");
+            String shipAddress1 = request.getParameter("shipAddress1");
+            String shipAddress2 = request.getParameter("shipAddress2");
+            String shipCity = request.getParameter("shipCity");
+            String shipState = request.getParameter("shipState");
+            String shipZip = request.getParameter("shipZip");
+            String shipCountry = request.getParameter("shipCountry");
 
-            request.getRequestDispatcher(SHIPPINGFORM).forward(request, response);
+            order.setShipToFirstName(shipToFirstName);
+            order.setShipToLastName(shipToLastName);
+            order.setShipAddress1(shipAddress1);
+            order.setShipAddress2(shipAddress2);
+            order.setShipCity(shipCity);
+            order.setShipState(shipState);
+            order.setShipZip(shipZip);
+            order.setCourier(shipCountry);
+
+            session.setAttribute("order", order);
+            request.getRequestDispatcher(CONFIRM_ORDER_FORM).forward(request, response);
         }
-
     }
 }

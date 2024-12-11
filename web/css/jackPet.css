@@ -129,6 +129,7 @@ nav > #logo {
     align-items: center;
     grid-gap: 8px;
     line-height: 100%;
+    cursor: pointer;
 }
 
 nav > #logo > span {
@@ -137,11 +138,13 @@ nav > #logo > span {
 
 nav > #utility {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     grid-gap: 16px;
 }
-
+#SearchContent > form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .card-large,
 .card-med {
     /*    border: 1px solid orange;*/
@@ -884,4 +887,35 @@ footer ul li {
 
     }
 
+}
+
+#autocompleteSuggestions {
+    position: absolute;
+    width: 200px;
+    z-index: 1000;
+    /*background-color: red;*/
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #ddd;
+}
+#svgButton{
+    padding: 0px 0px;
+    border-radius: 48px;
+    display: inline-block;
+    /*flex-direction: row;*/
+    grid-gap: 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.need{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }

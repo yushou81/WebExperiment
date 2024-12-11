@@ -3,8 +3,6 @@ package org.csu.mypetstore.web.servlets;
 import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.domain.Cart;
 import org.csu.mypetstore.domain.Item;
-import org.csu.mypetstore.persistence.CartItemDAO;
-import org.csu.mypetstore.persistence.Impl.CartItemImpl;
 import org.csu.mypetstore.service.CartService;
 import org.csu.mypetstore.service.CatalogService;
 import org.csu.mypetstore.service.LogService;
@@ -42,7 +40,7 @@ public class AddItemToCartServlet extends HttpServlet {
         account = (Account)session.getAttribute("account");
 
         if(account != null){
-            cart=cartService.createCarte(account.getUsername());
+            cart=cartService.creatCart(account.getUsername());
             session.setAttribute("cart", cart);
         }
         else if(cart == null){
@@ -54,7 +52,7 @@ public class AddItemToCartServlet extends HttpServlet {
 
         if(cart.containsItemId(workingItemId)){
             //已有该物品，数量加一
-            cart.incrementQuantityByItemId(workingItemId);
+            cart.incQuantityByItemId(workingItemId);
 
 
             if(account != null){
@@ -89,8 +87,6 @@ public class AddItemToCartServlet extends HttpServlet {
                 String logInfo = logService.logInfo(" ") + strBackUrl + " 添加物品 " + item + " 到购物车";
                 logService.insertLogInfo(account.getUsername(), logInfo);
             }
-
-
         }
         request.getRequestDispatcher(VIEW_CART).forward(request, response);
     }

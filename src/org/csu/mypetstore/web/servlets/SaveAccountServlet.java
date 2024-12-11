@@ -51,6 +51,9 @@ public class SaveAccountServlet extends HttpServlet {
         String listOption = request.getParameter("listOption");
         String bannerOption = request.getParameter("bannerOption");
 
+        System.out.println("list"+listOption);
+        System.out.println("banner"+bannerOption);
+
         account.setUsername(username);
 
         account.setPassword(password);
@@ -66,8 +69,21 @@ public class SaveAccountServlet extends HttpServlet {
         account.setCountry(country);
         account.setLanguagePreference(languagePreference);
         account.setFavouriteCategoryId(favouriteCategoryId);
+        if(listOption == null){
+            listOption = "false";
+        }else {
+            listOption = "true";
+        }
+        if(bannerOption == null){
+            bannerOption = "false";
+        }else {
+            bannerOption = "true";
+        }
         account.setListOption(Boolean.parseBoolean(listOption));
         account.setBannerOption(Boolean.parseBoolean(bannerOption));
+
+        System.out.println("account"+account.isListOption());
+        System.out.println("account"+account.isBannerOption());
 
         accountService = new AccountService();
         accountService.updateAccount(account);
@@ -87,6 +103,5 @@ public class SaveAccountServlet extends HttpServlet {
             session.setAttribute("isNewAccount", "false");
         }
         request.getRequestDispatcher(MAIN).forward(request, response);
-        request.getRequestDispatcher(EDITACOUNT).forward(request, response);
     }
 }

@@ -8,7 +8,6 @@ import org.csu.mypetstore.persistence.ItemDAO;
 import org.csu.mypetstore.persistence.Impl.CartItemImpl;
 import org.csu.mypetstore.persistence.Impl.ItemDAOImpl;
 
-import java.util.List;
 import java.util.Map;
 
 public class CartService {
@@ -20,7 +19,17 @@ public class CartService {
         cartItemDao = new CartItemImpl();
     }
 
-    public Cart createCarte(String username){
+    public Cart getCart(String username){
+        Cart cart = new Cart();
+        Map<String, CartItem> cartItemMap = cartItemDao.getCartItemsByUsername(username);
+        cart.setCartItemCount(cartItemMap.size());
+        cart.setCatItemMap(cartItemMap);
+        return cart;
+    }
+
+
+//   废弃函数
+    public Cart creatCart(String username){
         Cart cart = new Cart();
         Map<String, CartItem> cartItemMap = cartItemDao.getCartItemsByUsername(username);
         for (CartItem cartItem : cartItemMap.values()){
@@ -52,5 +61,9 @@ public class CartService {
 
     public void clearCart(String username){
         cartItemDao.clearCartItems(username);
+    }
+
+    public void renewCart(String username, String itemId, int quantity) {
+        cartItemDao.renewCartItem(username,itemId,quantity);
     }
 }

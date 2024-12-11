@@ -34,9 +34,11 @@ public class NewOrderFormServlet extends HttpServlet {
         if (account == null){
             session.setAttribute("message", "You must sign on before attempting to check out.  Please sign on and try checking out again.");
             request.getRequestDispatcher(SIGNONFORM).forward(request, response);
-        } else if(cart != null){
+        }else if(cart != null){
+
             order = new Order();
             order.initOrder(account, cart);
+
             session.setAttribute("order", order);
 
             Account account = (Account)session.getAttribute("account");

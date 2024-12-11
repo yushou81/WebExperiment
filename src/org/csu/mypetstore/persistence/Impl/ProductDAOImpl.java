@@ -18,7 +18,9 @@ public class ProductDAOImpl implements ProductDAO {
     private static final String getProductString = "SELECT PRODUCTID, NAME, DESCN as description, CATEGORY as categoryId " +
             "FROM PRODUCT WHERE PRODUCTID = ?";
     private static final String searchProductListString = "select PRODUCTID, NAME, DESCN as description, " +
-            "CATEGORY as categoryId from PRODUCT WHERE lower(name) like ?";
+            "CATEGORY as categoryId ,img from PRODUCT WHERE lower(name) like ?";
+    private static final String autoFixAearchProductListString = "select NAME " +
+            "from PRODUCT WHERE lower(name) like ?";
 
     @Override
     public List<Product> getProductListByCategory(String categoryId) {
@@ -81,12 +83,15 @@ public class ProductDAOImpl implements ProductDAO {
             pStatement.setString(1, keywords);
             ResultSet resultSet = pStatement.executeQuery();
 
+            System.out.println("search"+keywords);
+
             while (resultSet.next()){
                 Product product = new Product();
                 product.setProductId(resultSet.getString(1));
                 product.setName(resultSet.getString(2));
                 product.setDescription(resultSet.getString(3));
                 product.setCategoryId(resultSet.getString(4));
+                product.setImg(resultSet.getString(5));
 
                 productList.add(product);
             }
@@ -98,4 +103,32 @@ public class ProductDAOImpl implements ProductDAO {
         }
         return productList;
     }
+
+    public List<String> autoFixSearchProductList(String keywords) {
+        List<String> productStrings = new ArrayList<String>();
+        try{
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(autoFixAearchProductListString);
+
+            System.out.println(keywords);
+
+            pStatement.setString(1, keywords);
+            ResultSet resultSet = pStatement.executeQuery();
+
+            System.out.println(resultSet);
+
+            while (resultSet.next()){
+                productStrings.add(resultSet.getString(1));
+                System.out.println("sss"+productStrings);
+
+            }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatent(pStatement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return productStrings;
+    }
+
 }
