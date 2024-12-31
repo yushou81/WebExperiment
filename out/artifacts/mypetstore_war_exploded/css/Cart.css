@@ -29,20 +29,20 @@ th {
     text-align:center;
 }
 
-#Catalog input[type="submit"]{
-    padding: .3ex;
-    color: #fff;
-    background-color: #005e21;
-    text-decoration: none;
-    font-family: helvetica, tahoma, arial, verdana, sans-serif;
-    font-size: 1.5ex;
-    border-width:0;
-}
-#Catalog input[type="submit"]:hover {
-    color: #000;
-    background-color: #54c07a;
-    cursor:pointer;
-}
+/*#Catalog input[type="submit"]{*/
+/*    padding: .3ex;*/
+/*    color: #fff;*/
+/*    background-color:  #463631;*/
+/*    text-decoration: none;*/
+/*    font-family: helvetica, tahoma, arial, verdana, sans-serif;*/
+/*    font-size: 1.5ex;*/
+/*    border-width:0;*/
+/*}*/
+/*#Catalog input[type="submit"]:hover {*/
+/*    color: #000;*/
+/*    background-color:  #463631;*/
+/*    cursor:pointer;*/
+/*}*/
 
 #Catalog table{
     margin-left:auto;
