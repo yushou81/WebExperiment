@@ -28,11 +28,7 @@
 			</svg>
 			My<br> Pet Store
 		</div>
-		<script>
-			document.getElementById("logo").addEventListener("click", function () {
-				window.location.href = "main"; // 指定跳转的链接
-			});
-		</script>
+
 		<ul class="navigation-menu">
 			<li>
 				<a href="#">Products</a>
@@ -160,10 +156,6 @@
 	</nav>
 </header>
 
-<%--<div id="BackLink">--%>
-<%--	<a href="main">Return to Main Menu</a>--%>
-<%--</div>--%>
-
 <div id="Catalog">
 	<div id="Cart">
 
@@ -189,6 +181,34 @@
 	</div>
 
 </div>
+
+<footer>
+	<ul>
+		Products
+		<li><a href="#">Food &amp; Treats</a></li>
+		<li><a href="#">Toys</a></li>
+		<li><a href="#">Beds &amp; Furniture</a></li>
+		<li><a href="#">Outdoor Supplies</a></li>
+		<li><a href="#">Clothing</a></li>
+		<li><a href="#">Aquariums</a></li>
+		<li><a href="#">Rocks &amp; Decorations</a></li>
+	</ul>
+
+	<ul>
+		Shop by Pet
+		<li><a href="#">Dogs</a></li>
+		<li><a href="#">Cats</a></li>
+		<li><a href="#">Birds</a></li>
+		<li><a href="#">Fish</a></li>
+	</ul>
+
+	<ul>
+		Our Company
+		<li><a href="#">Locations &amp; Hours</a></li>
+		<li><a href="#">About Us</a></li>
+	</ul>
+</footer>
+</body>
 <script>
 	var Cart;
 	function getCart(username) {
@@ -287,7 +307,7 @@
 		var th8 = $('<th>').text('Remove');
 		// 将 th 元素添加到 tr 中
 		tr.append(th1, th2, th3, th4, th5, th6, th7,th8);
-			// 将 tr 元素添加到 tbody 中
+		// 将 tr 元素添加到 tbody 中
 		$('.cartItems').append(tr);
 
 		//如果没有就显示空的tr
@@ -348,6 +368,7 @@
 							data: { username: "${sessionScope.account.username}",itemId: item.itemId,quantity: newQuantity }, // 将 itemId 作为请求参数
 							success: function (response) {
 								alert('Item quantity update successfully!');
+								displayCart(response);
 							},
 							error: function (xhr, status, error) {
 								alert('Failed to update item quantity:'+ error);
@@ -395,31 +416,9 @@
 </script>
 <!-- partial -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<footer>
-	<ul>
-		Products
-		<li><a href="#">Food &amp; Treats</a></li>
-		<li><a href="#">Toys</a></li>
-		<li><a href="#">Beds &amp; Furniture</a></li>
-		<li><a href="#">Outdoor Supplies</a></li>
-		<li><a href="#">Clothing</a></li>
-		<li><a href="#">Aquariums</a></li>
-		<li><a href="#">Rocks &amp; Decorations</a></li>
-	</ul>
-
-	<ul>
-		Shop by Pet
-		<li><a href="#">Dogs</a></li>
-		<li><a href="#">Cats</a></li>
-		<li><a href="#">Birds</a></li>
-		<li><a href="#">Fish</a></li>
-	</ul>
-
-	<ul>
-		Our Company
-		<li><a href="#">Locations &amp; Hours</a></li>
-		<li><a href="#">About Us</a></li>
-	</ul>
-</footer>
-</body>
+<script>
+	document.getElementById("logo").addEventListener("click", function () {
+		window.location.href = "main"; // 指定跳转的链接
+	});
+</script>
 </html>

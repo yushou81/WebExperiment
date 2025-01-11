@@ -158,10 +158,6 @@
 	</nav>
 </header>
 
-<div id="BackLink">
-	<a href="main">Return to Main Menu</a>
-</div>
-
 <div id="Catalog">
 	<div class="container">
 		<h4>Please confirm the information below and then press continue...</h4>
@@ -248,33 +244,12 @@
 
 		</table>
 <%--		<a class="Button" href="viewOrder">Confirm</a>--%>
-		<button onclick="viewOrder()">111</button>
+		<button onclick="viewOrder()" class="btn-confirm">Confirm</button>
 	</div>
 </div>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-<script>
-	function viewOrder() {
-		$.ajax({
-			url: 'viewOrder',
-			type: 'GET',
-			dataType: 'json',
-			success: function(response) {
-				// 处理成功的响应
-				console.log(response);
-				// 显示订单详情
-				displayOrderDetails(response);
-			},
-			error: function(xhr, status, error) {
-				// 处理错误
-				console.error('Error getting order details:', error);
-			}
-		});
-	}
 
-
-</script>
-<script src="js/ViewOrder.js"></script>
 <footer>
 	<ul>
 		Products
@@ -302,6 +277,28 @@
 	</ul>
 </footer>
 </body>
+<script>
+	function viewOrder() {
+		$.ajax({
+			url: 'viewOrder',
+			type: 'GET',
+			dataType: 'json',
+			success: function(response) {
+				// 处理成功的响应
+				console.log(response);
+				// 显示订单详情
+				displayOrderDetails(response);
+			},
+			error: function(xhr, status, error) {
+				// 处理错误
+				console.error('Error getting order details:', error);
+			}
+		});
+	}
+
+
+</script>
+<script src="js/ViewOrder.js"></script>
 </html>
 
 
